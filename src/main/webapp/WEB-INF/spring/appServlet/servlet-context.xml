@@ -17,7 +17,7 @@
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Looks packages below for Spring components (@Controller, @Repository...). -->
-	<context:component-scan base-package="br.com.loopec.controller" />
+	<context:component-scan base-package="br.com.loopec.skeleton.controller" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .html (Thymeleaf) 
 		resources in the /WEB-INF/views directory -->
