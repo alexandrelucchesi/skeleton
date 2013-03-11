@@ -32,15 +32,15 @@
 	<context:component-scan base-package="br.com.loopec.skeleton.persistence.dao" />
 
     <beans profile="production">
-        <bean id="mysqlProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-            <property name="location" value="classpath:mysql-production.properties" />
+        <bean class="java.net.URI" id="mysqlDbUrl">
+            <constructor-arg value="#{systemEnvironment['CLEARDB_DATABASE_URL']}"/>
         </bean>
         <bean id="dataSource"
               class="org.apache.commons.dbcp.BasicDataSource">
             <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-            <property name="url" value="${mysql.url}" />
-            <property name="username" value="${mysql.username}" />
-            <property name="password" value="${mysql.password}" />
+            <property name="url" value="#{ 'jdbc:mysql://' + @mysqlDbUrl.getHost() + ':' + @mysqlDbUrl.getPort() + @mysqlDbUrl.getPath() }"/>
+            <property name="username" value="#{ @mysqlDbUrl.getUserInfo().split(':')[0] }"/>
+            <property name="password" value="#{ @mysqlDbUrl.getUserInfo().split(':')[1] }"/>
             <property name="initialSize" value="5" />
             <property name="maxActive" value="10" />
         </bean>
