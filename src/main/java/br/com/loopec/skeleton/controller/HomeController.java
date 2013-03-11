@@ -30,21 +30,23 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
-	 * Simply selects the home view to render by returning its name.
+	 * Simply renders the construction view and logs the client locale.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
+		return "construction";
 	}
+
+    /**
+     * Simply lists the examples included with the Skeleton project
+     */
+    @RequestMapping(value = "skeleton")
+    public String skeleton() {
+        return "skeleton";
+    }
+
 	
 	/**
 	 * Simply returns a String which is shown in the browser.
