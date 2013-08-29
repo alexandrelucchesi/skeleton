@@ -34,25 +34,25 @@ label {
 	<h2>Registration Form</h2>
 	<!-- It's possible to bind an object (entities) directly to the form, using them as
 		"form backing beans". -->
-	<form th:action="@{/form}" th:object="${user}" method="post">
+	<form th:action="@{/advancedForm}" th:object="${user}" method="post">
 		<!-- ALTERNATIVE FORM: Show errors if any exist. -->
-		<!-- <div>
+		<div>
 			<ul th:if="${#fields.hasErrors('*')}">
 				<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input
 					is incorrect</li>
 			</ul>
-		</div> -->
+		</div>
 		<p th:text="${status}">Status message...</p>
 		<fieldset>
 			<div>
 				<label for="name" th:class="${#fields.hasErrors('name')} ? 'fieldError'">Name <span class="required">*</span>: </label>
-				<input type="text" name="name"
+				<input id="name" type="text" name="name"
 					placeholder="Enter your name." th:field="*{name}" />
 					<span th:if="${#fields.hasErrors('name')}" th:text="${#fields.errors('name')}"></span>
 			</div>
 			<div>
 				<label for="email" th:class="${#fields.hasErrors('email')} ? 'fieldError'">E-mail <span class="required">*</span>: </label>
-				<input type="text" name="email"
+				<input id="email" type="text" name="email"
 					placeholder="Enter your e-mail." th:field="*{email}" />
 					<span th:if="${#fields.hasErrors('email')}" th:text="${#fields.errors('email')}"></span>
 			</div>

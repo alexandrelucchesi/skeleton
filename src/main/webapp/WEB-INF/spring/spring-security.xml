@@ -12,6 +12,7 @@
 	<http pattern="/login" security="none" />
 	<http pattern="/lostPassword" security="none" />
 	<http pattern="/resources/**" security="none" />
+    <http pattern="/" security="none" />
 
 	<http auto-config="true">
 		<!-- Login page not implemented yet. Using Spring's default. -->
